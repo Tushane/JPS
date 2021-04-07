@@ -1,0 +1,67 @@
+﻿@model JPS.Models.Bill_Information
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="bill_id" class="control-label"></label>
+                <input asp-for="bill_id" class="form-control" readonly/>
+                <span asp-validation-for="bill_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="date_generated" class="control-label"></label>
+                <input asp-for="date_generated" class="form-control" type="date" readonly/>
+                <span asp-validation-for="date_generated" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="due_date" class="control-label"></label>
+                <input asp-for="due_date" class="form-control" type="date" />
+                <span asp-validation-for="due_date" class="text-danger"></span>
+            </div>
+          
+                <div class="form-group">
+                    <label asp-for="cust_id" class="control-label"></label>
+                    <select asp-for="cust_id" name="cust_id" class="form-control">
+                        @foreach (var item in Model.cust_ids)
+                        {
+                          <option value="@item.cust_id">@item.cust_id</option>
+                        }
+                    </select>
+                    <span asp-validation-for="cust_id" class="text-danger"></span>
+                </div>
+        
+            <div class="form-group">
+                <label asp-for="amount" class="control-label"></label>
+                <input asp-for="amount" class="form-control" type="number"/>
+                <span asp-validation-for="amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="status" class="control-label"></label>
+                <select asp-for="status" name="status" class="form-control">
+                    <option value="PENDING">PENDING</option>
+                    <option value="PAID">PAID</option>
+                </select>
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="CREATE BILL" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+
+}

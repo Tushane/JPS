@@ -1,0 +1,43 @@
+﻿@model JPS.Models.CreateRoleModel
+
+@{
+    ViewData["Title"] = "CreateRole";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h4>Welcome to the Role Creator</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateRole">
+            @* <div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <div class="form-group">
+                <label asp-for="role_name" class="control-label"></label>
+                <input asp-for="role_name" class="form-control" />
+                <span asp-validation-for="role_name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">
+                Use the button below to view all created roles
+            </h5>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Administration" asp-action="ListRoles">
+                View Roles
+            </a>
+            <a class="btn btn-primary" style="width:auto"
+               asp-controller="Administration" asp-action="ListUsers">
+                View Users
+            </a>
+        </div>
+    </div>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

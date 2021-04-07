@@ -1,0 +1,45 @@
+﻿@model IEnumerable<JPS.Data.PREMISE_DETAILS>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ROW_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SUB_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LOCATION_ADDRESS)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ROW_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SUB_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LOCATION_ADDRESS)
+            </td>
+            <td style="width:100px;">
+                <a asp-action="Edit" asp-route-id="@item.ID" class="fas fa-edit" style="color:orange; font-size:17px; text-decoration:none"></a> |
+                <a asp-action="Delete" asp-route-id="@item.ID" class="fas fa-minus-circle" style="color:red; font-size:17px;text-decoration:none"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

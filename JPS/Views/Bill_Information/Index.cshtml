@@ -1,0 +1,70 @@
+﻿@model IEnumerable<JPS.Models.Bill_Information>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date_generated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.due_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cust_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.premise_id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_generated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.due_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cust_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.premise_id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td style="width:100px;">
+                <a asp-action="Edit" asp-route-id="@item.bill_id" class="fas fa-edit" style="color:orange; font-size:17px; text-decoration:none"></a>
+                <a asp-action="Details" asp-route-id="@item.bill_id" class="fas fa-info-circle" style="color:green; font-size:17px; text-decoration:none "></a>
+                <a asp-action="Delete" asp-route-id="@item.bill_id" class="fas fa-minus-circle" style="color:red; font-size:17px;text-decoration:none"></a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

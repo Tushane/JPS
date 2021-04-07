@@ -1,0 +1,57 @@
+﻿@model IEnumerable<JPS.Models.Bill_Information>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date_generated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.due_date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date_generated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.due_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td style="width:100px;">
+                <form method="post" asp-action="ToPayment" asp-route-id="@item.bill_id">
+                    <div>
+                        <input type="submit" value="PAY" class="btn btn-primary" />
+                    </div>
+                </form>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

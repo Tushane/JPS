@@ -1,0 +1,67 @@
+﻿@model Payment_Details
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="row">
+
+    <form method="post" style="width:100%">
+        <center><div class="fas fa-credit-card" style="font-size:80px; color:darkblue"></div></center>
+        <hr />
+        <div style="width:100%; display:flex; flex:1">
+            <div class="col-md-4">
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="card_type"></label>
+                    <select asp-for="card_type" name="card_type" class="form-control">
+                        <option value="VISA CREDIT">VISA</option>
+                        <option value="MASTERCARD">MASTERCARD</option>
+                        <option value="MASTERCARD/VISA DEBIT">MASTERCARD/VISA DEBIT</option>
+                    </select>
+                    <span asp-validation-for="card_type" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="card_holder"></label>
+                    <input asp-for="card_holder" class="form-control" />
+                    <span asp-validation-for="card_holder" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="card_no"></label>
+                    <input asp-for="card_no" class="form-control" />
+                    <span asp-validation-for="card_no" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="exp_date"></label>
+                    <input asp-for="exp_date" class="form-control"  type="date"/>
+                    <span asp-validation-for="exp_date" class="text-danger"></span>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label asp-for="csv"></label>
+                    <input asp-for="csv" class="form-control" />
+                    <span asp-validation-for="csv" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="prod_amount"></label>
+                    <input asp-for="prod_amount" class="form-control"  readonly/>
+                    <span asp-validation-for="prod_amount" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="desc"></label>
+                    <input asp-for="desc" class="form-control" readonly/>
+                    <span asp-validation-for="desc" class="text-danger"></span>
+                </div>
+
+            </div>
+        </div>
+        <center><button type="submit" class="custom_button">COMEPLETE PAYMENT</button></center>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
